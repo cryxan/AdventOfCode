@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
+using UnityEngine.Android;
 
 namespace AdventOfCode
 {
     public class CephalopodMaths
     {
+        private char[][] mathMatrix;
+
         public CephalopodMaths()
         {
         }
 
-        public int LoadCephalopodMathsProblem(string filename)
+        public BigInteger LoadCephalopodMathsProblem(string filename)
         {
             if (!File.Exists(filename))
             {
@@ -23,78 +27,90 @@ namespace AdventOfCode
             
             var textLines = text.Split("\r\n");
 
-            var problemLines = new List<List<string>>();
-            
-            foreach (var textLine in textLines)
+            mathMatrix = new char[textLines.Length][];
+            for (var y = 0; y < textLines.Length; y++)
             {
-                var line = textLine.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
-                problemLines.Add(line);
+                mathMatrix[y] = textLines[y].ToCharArray();
             }
 
-            var checkCount = problemLines[0].Count;
-            foreach (var problemLine in problemLines)
-            {
-                if (problemLine.Count != checkCount)
-                {
-                    return -2;
-                }
-            }
-
-            foreach (var operation in problemLines[^1])
-            {
-                if (operation != "+" && operation != "*") return -3;
-            }
+            var readColumn = 0;
+            var numberList = new List<BigInteger>();
+            var operation = ' ';
+            var total = BigInteger.Parse("0");
             
-            var operations =  problemLines[^1];
-            var grandTotal = 0;
-            for (var col = 0; col < operations.Count; col++)
+            while (readColumn < mathMatrix[0].Length)
             {
-                switch (operations[col])
+                if (ColumnIsEmpty(readColumn))
                 {
-                    case "+":
-                        grandTotal += AddColumn(problemLines, col);
-                        break;
-                    case "*":
-                        grandTotal += MultiplyColumn(problemLines, col);
-                        break;
+                    total += DoOperation(operation, numberList);
+                    readColumn++;
+                    operation = ' ';
+                    numberList = new List<BigInteger>();
+                    continue;
                 }
-            }
-            
-            return grandTotal;
-        }
 
-        private int MultiplyColumn(List<List<string>> problemLines, int col)
-        {
-            var total = 1;
-            for (var y = 0; y < (problemLines.Count-1); y++)
-            {
-                if (int.TryParse(problemLines[y][col], out var value))
+                numberList.Add(GetNumber(readColumn));
+                if (mathMatrix[^1][readColumn] is '+' or '*')
                 {
-                    total *= value;
+                    operation = mathMatrix[^1][readColumn];
                 }
-                else
-                {
-                    total += 0;
-                }
+                readColumn++;
             }
+            total += DoOperation(operation, numberList);
+
             return total;
         }
 
-        private int AddColumn(List<List<string>> problemLines, int col)
+        private BigInteger DoOperation(char operation, List<BigInteger> numberList)
         {
-            var total = 0;
-            for (var y = 0; y < (problemLines.Count-1); y++)
+            switch (operation)
             {
-                if (int.TryParse(problemLines[y][col], out var value))
-                {
-                    total += value;
-                }
-                else
-                {
-                    total += 0;
-                }
+                case '+':
+                    return DoAddition(numberList);
+                case '*':
+                    return DoMultiplication(numberList);
             }
-            return total;
+
+            return 0;
+        }
+
+        private BigInteger DoMultiplication(List<BigInteger> numberList)
+        {
+            var result = BigInteger.Parse("1");
+            foreach (var number in numberList)
+            {
+                result *= number;
+            }
+            return result;
+        }
+
+        private BigInteger DoAddition(List<BigInteger> numberList)
+        {
+            var result = BigInteger.Parse("0");
+            foreach (var number in numberList)
+            {
+                result += number;
+            }
+            return result;
+        }
+
+        private BigInteger GetNumber(int col)
+        {
+            var numberStr = "";
+            foreach (var mathLine in mathMatrix)
+            {
+                if (char.IsDigit(mathLine[col])) numberStr += mathLine[col];
+            }
+            return BigInteger.Parse(numberStr);
+        }
+        
+        private bool ColumnIsEmpty(int col)
+        {
+            foreach (var mathLine in mathMatrix)
+            {
+                if (mathLine[col] != ' ') return false;
+            }
+            return true;
         }
     }
 }
