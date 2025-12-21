@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using AdventOfCode;
 using NUnit.Framework;
 using UnityEngine;
@@ -49,8 +50,8 @@ namespace AdventOfCode
             var result = idChecker.ParseRange(idRange, out var start, out var end);
             
             Assert.That(result, Is.EqualTo(valid));
-            Assert.That(start, Is.EqualTo(rangeStart), "Start");
-            Assert.That(end, Is.EqualTo(rangeEnd), "End");
+            Assert.That(start, Is.EqualTo((BigInteger)rangeStart), "Start");
+            Assert.That(end, Is.EqualTo((BigInteger)rangeEnd), "End");
         }
 
         [Test]
@@ -60,7 +61,7 @@ namespace AdventOfCode
             var result = idChecker.CheckIdFile(fileToLoad);
             
             Assert.That(result, Is.EqualTo(true));
-            Assert.That(idChecker.checkAccumulator, Is.EqualTo(0));
+            Assert.That(idChecker.checkAccumulator, Is.EqualTo((BigInteger)25912654282));
         }
         
         private static string GetThisFilePath([CallerFilePath] string path = null)

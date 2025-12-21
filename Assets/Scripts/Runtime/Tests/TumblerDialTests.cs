@@ -86,7 +86,7 @@ namespace AdventOfCode
             var result = tumblerDial.DialFile(fileToLoad, out var zeroHitCount);
             
             Assert.That(result, Is.EqualTo(success));
-            Assert.That(zeroHitCount, Is.EqualTo(0));
+            Assert.That(zeroHitCount, Is.EqualTo(success?5923:0));
         }
 
         private static string GetThisFilePath([CallerFilePath] string path = null)
