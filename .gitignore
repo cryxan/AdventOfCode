@@ -6,3 +6,9 @@ Logs/
 Packages/
 
 Temp/
+
+.idea/
+
+obj/
+
+AdventOfCode.sln.DotSettings.user
