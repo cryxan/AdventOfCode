@@ -12,10 +12,12 @@ namespace AdventOfCode
 {
     public class CircuitsTest
     {
+        Circuits  circuits;
+        
         [SetUp]
         public void Setup()
         {
-            
+            circuits = new Circuits();
         }
 
         [TestCase("Day8CircuitExample.txt", 40)]
@@ -24,7 +26,9 @@ namespace AdventOfCode
         {
             var fileToLoad = Path.Combine(GetThisFilePath(), "TestFiles", filename);
             
+            var result = circuits.LoadAndAnalyseCircuits(fileToLoad);
             
+            Assert.That(result, Is.EqualTo(expected));
         }
         
         private static string GetThisFilePath([CallerFilePath] string path = null)
