@@ -20,17 +20,28 @@ namespace AdventOfCode
             circuits = new Circuits();
         }
 
-        [TestCase("Day8CircuitExample.txt", 40)]
-        //[TestCase("Day8Circuit.txt", 0)]
-        public void CircuitsReturnExpectedValue(string filename, int expected)
+        [TestCase("Day8CircuitExample.txt", 10, 40)]
+        [TestCase("Day8Circuit.txt", 1000, 0)]
+        public void CircuitsReturnExpectedValue(string filename, int numberOfConnections, int expected)
         {
             var fileToLoad = Path.Combine(GetThisFilePath(), "TestFiles", filename);
             
-            var result = circuits.LoadAndAnalyseCircuits(fileToLoad);
+            var result = circuits.LoadAndAnalyseCircuits(fileToLoad, numberOfConnections);
             
             Assert.That(result, Is.EqualTo(expected));
         }
         
+        [TestCase("Day8CircuitExample.txt", 10, 40)]
+        [TestCase("Day8Circuit.txt", 1000, 0)]
+        public void CircuitsReturnExpectedValueOnOneCircuit(string filename, int numberOfConnections, int expected)
+        {
+            var fileToLoad = Path.Combine(GetThisFilePath(), "TestFiles", filename);
+            
+            var result = circuits.LoadAndAnalyseCircuits(fileToLoad, numberOfConnections);
+            
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         private static string GetThisFilePath([CallerFilePath] string path = null)
         {
             return Path.GetDirectoryName(path);
