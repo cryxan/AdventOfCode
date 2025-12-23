@@ -22,7 +22,33 @@ namespace AdventOfCode
 
         public int LoadAndAnalyseCircuits(string filename, int connectionsToMake)
         {
-            if (!File.Exists(filename)) return -1;
+            if (!LoadFile(filename)) return -1;
+
+            BuildJunctionBoxDistances();
+
+            FindConnections(connectionsToMake);
+
+            return CircuitMultiplier();
+        }
+        
+        public long LoadAndAnalyseToSingleCircuit(string filename)
+        {
+            if (!LoadFile(filename)) return -1;
+
+            BuildJunctionBoxDistances();
+
+            return FindConnectionsForSingle();
+
+            
+        }
+
+        private bool LoadFile(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+
+                return false;
+            }
             
             var text = File.ReadAllText(filename);
 
@@ -39,11 +65,7 @@ namespace AdventOfCode
                 junctionBoxesHashset.Add(box);
             }
 
-            BuildJunctionBoxDistances();
-
-            FindConnections(connectionsToMake);
-
-            return CircuitMultiplier();
+            return true;
         }
 
         private int CircuitMultiplier()
@@ -95,6 +117,38 @@ namespace AdventOfCode
 
                 if (--circuitCountDown == 0) break; // 10 connections made
             }
+        }
+
+        private long FindConnectionsForSingle()
+        {
+            foreach (var junctionDistance in sortedJunctionDistancesList)
+            {
+                var box1 = junctionDistance.box1;
+                var box2 = junctionDistance.box2;
+                if (box1.circuitMembership == null && box2.circuitMembership == null)
+                {
+                    AddNewCircuit(box1, box2);
+                }
+                else if (box1.circuitMembership != null && box2.circuitMembership == null)
+                {
+                    AddCircuitMember(box1, box2);
+                }
+                else if (box1.circuitMembership == null && box2.circuitMembership != null)
+                {
+                    AddCircuitMember(box2, box1);
+                }
+                else if (box1.circuitMembership != box2.circuitMembership)
+                {
+                    MergeCircuits(box1, box2);
+                }
+
+                if (box1.circuitMembership.junctionBoxes.Count == junctionBoxesList.Count)
+                {
+                    return box1.location.x * box2.location.x;
+                }
+            }
+
+            return -1;
         }
 
         private void AddNewCircuit(JunctionBox box1, JunctionBox box2)

@@ -31,13 +31,13 @@ namespace AdventOfCode
             Assert.That(result, Is.EqualTo(expected));
         }
         
-        [TestCase("Day8CircuitExample.txt", 10, 40)]
-        [TestCase("Day8Circuit.txt", 1000, 0)]
-        public void CircuitsReturnExpectedValueOnOneCircuit(string filename, int numberOfConnections, int expected)
+        [TestCase("Day8CircuitExample.txt", 10, 25272)]
+        [TestCase("Day8Circuit.txt", 1000, 724454082)]
+        public void CircuitsReturnExpectedValueOnOneCircuit(string filename, int numberOfConnections, long expected)
         {
             var fileToLoad = Path.Combine(GetThisFilePath(), "TestFiles", filename);
             
-            var result = circuits.LoadAndAnalyseCircuits(fileToLoad, numberOfConnections);
+            var result = circuits.LoadAndAnalyseToSingleCircuit(fileToLoad);
             
             Assert.That(result, Is.EqualTo(expected));
         }
