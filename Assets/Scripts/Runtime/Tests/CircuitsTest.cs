@@ -12,7 +12,7 @@ namespace AdventOfCode
 {
     public class CircuitsTest
     {
-        Circuits  circuits;
+        private Circuits  circuits;
         
         [SetUp]
         public void Setup()
@@ -21,8 +21,8 @@ namespace AdventOfCode
         }
 
         [TestCase("Day8CircuitExample.txt", 40)]
-        [TestCase("Day8Circuit.txt", 0)]
-        void CircuitsReturnExpectedValue(string filename, int expected)
+        //[TestCase("Day8Circuit.txt", 0)]
+        public void CircuitsReturnExpectedValue(string filename, int expected)
         {
             var fileToLoad = Path.Combine(GetThisFilePath(), "TestFiles", filename);
             

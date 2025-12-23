@@ -6,7 +6,7 @@ namespace AdventOfCode
 {
     public class Circuits
     {
-        List<Vector3Int> circuits = new List<Vector3Int>();
+        List<JunctionBox> junctionBoxes = new List<JunctionBox>();
         
         public Circuits()
         {
@@ -23,14 +23,24 @@ namespace AdventOfCode
             foreach (var circuitLocationString in circuitLocationStrings)
             {
                 var locationArray = circuitLocationString.Split(',');
-                var location = new Vector3Int(
+                var location = new Vector3(
                     int.Parse(locationArray[0]),
                     int.Parse(locationArray[1]),
                     int.Parse(locationArray[2]));
-                circuits.Add(location);
+                junctionBoxes.Add(new JunctionBox(location));
             }
 
             return -2;
+        }
+    }
+
+    public class JunctionBox
+    {
+        public Vector3 location;
+        
+        public JunctionBox(Vector3 location)
+        {
+            this.location = location;
         }
     }
 }
