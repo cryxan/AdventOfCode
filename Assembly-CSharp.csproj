@@ -46,12 +46,14 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1-x86_64\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Runtime\MachineSwitches.cs" />
     <Compile Include="Assets\Scripts\Runtime\Tests\CircuitsTest.cs" />
     <Compile Include="Assets\Scripts\Runtime\Tests\IdCheckerTests.cs" />
     <Compile Include="Assets\Scripts\Runtime\Tachyon.cs" />
     <Compile Include="Assets\Scripts\Runtime\Tests\TumblerDialTests.cs" />
     <Compile Include="Assets\Scripts\Runtime\IdChecker.cs" />
     <Compile Include="Assets\Scripts\Runtime\PaperRolls.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Tests\MachineSwitchesTest.cs" />
     <Compile Include="Assets\Scripts\Runtime\Tests\IngredientsTest.cs" />
     <Compile Include="Assets\Scripts\Runtime\Carpet.cs" />
     <Compile Include="Assets\Scripts\Runtime\Tests\CephalopodMathsTest.cs" />
@@ -90,6 +92,7 @@
     <None Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1-x86_64\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.tilemap\package.json" />
     <None Include="Library\PackageCache\com.unity.test-framework.performance@0840f58e4562\ValidationExceptions.json" />
     <None Include="Library\PackageCache\com.unity.timeline@6b9e48457ddb\package.json" />
+    <None Include="Assets\Scripts\Runtime\Tests\TestFiles\Day10MachineSwitchesExample.txt" />
     <None Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1-x86_64\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.accessibility\package.json" />
     <None Include="Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb\ValidationConfig.json" />
     <None Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1-x86_64\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrainphysics\package.json" />
@@ -112,6 +115,7 @@
     <None Include="Library\PackageCache\com.unity.searcher@d45a78918735\package.json" />
     <None Include="C:\Program Files\Unity\Hub\Editor\6000.3.2f1-x86_64\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.video\package.json" />
     <None Include="Library\PackageCache\com.unity.shadergraph@3cfe1d1f3f8c\ValidationConfig.json" />
+    <None Include="Assets\Scripts\Runtime\Tests\TestFiles\Day10MachineSwitches.txt" />
     <None Include="Library\PackageCache\com.unity.ide.rider@1f60b3138684\ValidationExceptions.json" />
     <None Include="Library\PackageCache\com.unity.test-framework@0b7a23ab2e1d\package.json" />
     <None Include="Assets\Scripts\Runtime\Tests\TestFiles\Day8Circuit.txt" />
