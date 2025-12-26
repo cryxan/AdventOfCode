@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Package Manager
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 37
+  controlID: 103
   draggingID: 0
 --- !u!114 &3
 MonoBehaviour:
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: PackageManagerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -271,17 +271,17 @@ MonoBehaviour:
     y: 0
     width: 1103
     height: 503
-  m_MinSize: {x: 202, y: 226}
+  m_MinSize: {x: 282, y: 276}
   m_MaxSize: {x: 4002, y: 4026}
-  m_ActualView: {fileID: 20}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 19}
   - {fileID: 20}
   - {fileID: 15}
   - {fileID: 14}
   - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 3
+  m_Selected: 2
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_TestListGUIs:
   - m_Window: {fileID: 0}
     runProgress:
-      RunGuid: 6d12efd1-c1f1-4fc2-b56a-537ce8c67c47
+      RunGuid: 2555bc39-1322-4d8f-b855-e07cbe0e74ff
       ExecutionSettings:
         m_TargetPlatform: 0
         m_HasTargetPlatform: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
     m_SelectedOption: 0
   - m_Window: {fileID: 14}
     runProgress:
-      RunGuid: 6d12efd1-c1f1-4fc2-b56a-537ce8c67c47
+      RunGuid: 2555bc39-1322-4d8f-b855-e07cbe0e74ff
       ExecutionSettings:
         m_TargetPlatform: 0
         m_HasTargetPlatform: 0
@@ -3960,7 +3960,7 @@ MonoBehaviour:
     m_SelectedOption: 0
   - m_Window: {fileID: 0}
     runProgress:
-      RunGuid: 6d12efd1-c1f1-4fc2-b56a-537ce8c67c47
+      RunGuid: 2555bc39-1322-4d8f-b855-e07cbe0e74ff
       ExecutionSettings:
         m_TargetPlatform: 0
         m_HasTargetPlatform: 0
@@ -4049,8 +4049,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Package Manager\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 363
-    y: 79
+    x: 364
+    y: 24
     width: 1101
     height: 477
   m_SerializedDataModeController:
@@ -4345,13 +4345,23 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -10690
-      - m_Data: -9282
-      - m_Data: -7898
-      - m_Data: -6514
-      - m_Data: -5540
-      - m_Data: -3650
-      - m_Data: -2680
+      - m_Data: -17198
+      - m_Data: -16294
+      - m_Data: -15390
+      - m_Data: -14486
+      - m_Data: -13778
+      - m_Data: -12874
+      - m_Data: -11586
+      - m_Data: -10490
+      - m_Data: -9624
+      - m_Data: -8720
+      - m_Data: -7816
+      - m_Data: -6950
+      - m_Data: -6046
+      - m_Data: -5142
+      - m_Data: -4238
+      - m_Data: -3180
+      - m_Data: -2316
       - m_Data: -1298
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -5040,8 +5050,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 364
-    y: 24
+    x: 363
+    y: 79
     width: 1101
     height: 477
   m_SerializedDataModeController:
@@ -5087,10 +5097,10 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
-    m_VSlider: 1
+    m_HSlider: 0
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1

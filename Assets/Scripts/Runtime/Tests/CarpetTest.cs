@@ -26,7 +26,7 @@ namespace AdventOfCode
         }
 
         [TestCase("Day9CarpetExample.txt", 24)]
-        [TestCase("Day9Carpet.txt", 0)]
+        [TestCase("Day9Carpet.txt", 1568849600)]
 
         public void CircuitsReturnExpectedLargestCarpetInBoundry(string filename, long expectArea)
         {
