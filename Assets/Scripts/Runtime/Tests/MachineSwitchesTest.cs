@@ -7,10 +7,12 @@ namespace AdventOfCode
 {
     public class MachineSwitchesTest
     {
+        private MachineSwitches machineSwitches;
+
         [SetUp]
         public void Setup()
         {
-            
+            machineSwitches = new MachineSwitches();
         }
 
         [TestCase("Day10MachineSwitchesExample.txt", 7)]
@@ -19,6 +21,9 @@ namespace AdventOfCode
         {
             var fileToLoad = Path.Combine(GetThisFilePath(), "TestFiles", fileName);
 
+            var result = machineSwitches.LoadAndAnalyseSwitches(fileToLoad);
+            
+            Assert.That(result, Is.EqualTo(expected));
         }
         
         private static string GetThisFilePath([CallerFilePath] string path = null)
