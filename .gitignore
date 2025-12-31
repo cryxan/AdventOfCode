@@ -208,3 +208,5 @@ UnityEngine.UI.csproj
 UnityEngine.UI.Tests.csproj
 
 UserSettings/Layouts/default-6000.dwlt
+
+UserSettings/
